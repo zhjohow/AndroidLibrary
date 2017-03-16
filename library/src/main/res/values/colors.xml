@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="gray">#727272</color>
+    <color name="white">#ffffff</color>
+    <color name="popup_dialog_listview_bg">#eeffffff</color>
+    <color name="popup_dialog_list_pressed">#10000000</color>
+    <color name="popup_dialog_list_normal">#00000000</color>
+    <color name="popup_dialog_btn_pressed">#30000000</color>
+    <color name="popup_dialog_btn_normal">#eeffffff</color>
+    <color name="popup_dialog_list_text_color">#33ccee</color>
+    <color name="popup_dialog_btn_text_color">#33ccff</color>
+    <color name="popup_dialog_divider_color">#66000000</color>
+</resources>
