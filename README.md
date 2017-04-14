@@ -1,2 +1,2 @@
-# Android Library 
+# Library 
 hello world
