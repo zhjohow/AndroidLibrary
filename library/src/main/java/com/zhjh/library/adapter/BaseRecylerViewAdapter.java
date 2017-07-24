@@ -4,13 +4,13 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 
-import com.apponsite.library.interfaces.OnRecycleriewItemClickListener;
+import com.zhjh.library.interfaces.OnRecycleriewItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by liming on 15/9/12.
+ * Created by zhjh on 15/9/12.
  */
 public abstract class BaseRecylerViewAdapter<T>  extends RecyclerView.Adapter {
 

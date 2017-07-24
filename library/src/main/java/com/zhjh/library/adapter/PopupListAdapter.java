@@ -12,7 +12,7 @@ import com.zhjh.library.R;
 import java.util.List;
 
 /**
- * Created by cjlmonster on 2016/1/31.
+ * Created by zhjh on 2016/1/31.
  */
 public class PopupListAdapter extends BaseAdapter {
 

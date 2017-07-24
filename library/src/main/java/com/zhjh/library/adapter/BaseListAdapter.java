@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by liming on 15/9/12.
+ * Created by zhjh on 15/9/12.
  */
 public abstract class BaseListAdapter<T> extends BaseAdapter {
 
