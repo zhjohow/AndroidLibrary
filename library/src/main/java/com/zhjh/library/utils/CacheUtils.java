@@ -105,6 +105,13 @@ public class CacheUtils {
     public static void remove(String key){
         getInstance().remove(key);
     }
+    
+     /**
+     * 清除缓存
+     */
+    public static void clear(){
+        getInstance().clear();
+    }
 
     /**
      * 是否存在缓存
