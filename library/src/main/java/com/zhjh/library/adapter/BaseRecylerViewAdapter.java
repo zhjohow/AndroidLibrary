@@ -29,6 +29,7 @@ public abstract class BaseRecylerViewAdapter<T>  extends RecyclerView.Adapter {
 
     public void setDatas(List datas) {
         this.mDatas = datas;
+        this.notifyDataSetChanged();
     }
 
     public  List<T> getDatas(){
