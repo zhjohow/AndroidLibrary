@@ -35,6 +35,7 @@ public abstract class BaseListAdapter<T> extends BaseAdapter {
         if (mDatas == null)
             mDatas = new ArrayList<>();
         mDatas.add(itme);
+        this.notifyDataSetChanged();
     }
 
 
@@ -43,6 +44,15 @@ public abstract class BaseListAdapter<T> extends BaseAdapter {
         if (mDatas == null)
             mDatas = new ArrayList<>();
         mDatas.add(0,itme);
+        this.notifyDataSetChanged();
+    }
+    
+        public void replaceAll(List<T> datas) {
+        if (mDatas == null)
+            mDatas = new ArrayList<>();
+        mDatas.clear();
+        mDatas.addAll(datas);
+        this.notifyDataSetChanged();
     }
 
     @Override
