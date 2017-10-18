@@ -25,6 +25,7 @@ public abstract class BaseListAdapter<T> extends BaseAdapter {
 
     public void setDatas(List datas) {
         this.mDatas = datas;
+        this.notifyDataSetChanged();
     }
 
     public  List<T> getDatas(){
