@@ -71,13 +71,33 @@ public abstract class BaseMvpActivity<V, T extends BasePresenter<V>> extends App
                 }
             });
         }
-//        if (titleResId != 0){
-//            TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
-//
-//            mTitle.setText(getText(titleResId));
-//        }
-
         setTitle(title);
+
+    }
+
+    public void setupToolbar(Toolbar toolbar, Int titleResId) {
+        setSupportActionBar(toolbar);
+
+        ActionBar actionBar = getSupportActionBar();
+
+        if (actionBar != null) {
+            actionBar.setDisplayUseLogoEnabled(true);
+            actionBar.setDisplayShowTitleEnabled(true);
+            actionBar.setDisplayShowHomeEnabled(true);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+
+            toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.icon_back));
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onBackPressed();
+                }
+            });
+        }
+          if (titleResId != 0){
+             setTitle(getText(titleResId));
+          }
+
 
     }
 
