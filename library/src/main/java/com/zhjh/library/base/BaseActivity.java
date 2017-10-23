@@ -33,6 +33,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(provideLayoutId());
         ButterKnife.bind(this);
         AppManager.getAppManager().addActivity(this);
+        BaseBus.getInstance().register(this);
         mContext = this;
         initView(savedInstanceState);
 
@@ -43,7 +44,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         Log.e(this.getClass().getName() , "Resumebus");
-        BaseBus.getInstance().register(this);
+        
         super.onResume();
     }
 
@@ -66,13 +67,34 @@ public abstract class BaseActivity extends AppCompatActivity {
                 }
             });
         }
-//        if (titleResId != 0){
-//            TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
-//
-//            mTitle.setText(getText(titleResId));
-//        }
 
         setTitle(title);
+
+    }
+    
+     public void setupToolbar(Toolbar toolbar, Int titleResId) {
+        setSupportActionBar(toolbar);
+
+        ActionBar actionBar = getSupportActionBar();
+
+        if (actionBar != null) {
+            actionBar.setDisplayUseLogoEnabled(true);
+            actionBar.setDisplayShowTitleEnabled(true);
+            actionBar.setDisplayShowHomeEnabled(true);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+
+            toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.icon_back));
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onBackPressed();
+                }
+            });
+        }
+          if (titleResId != 0){
+             setTitle(getText(titleResId));
+          }
+
 
     }
 
