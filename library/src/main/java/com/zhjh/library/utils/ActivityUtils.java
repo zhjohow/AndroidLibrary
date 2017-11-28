@@ -6,8 +6,6 @@ import android.os.Bundle;
 
 /**
  * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
  *     time  : 2016/9/23
  *     desc  : Activity相关工具类
  * </pre>
@@ -55,5 +53,32 @@ public class ActivityUtils {
      */
     public static void launchActivity(Context context, String packageName, String className, Bundle bundle) {
         context.startActivity(IntentUtils.getComponentIntent(packageName, className, bundle));
+    }
+    
+        /**
+     * 将Fragment附加到Activity中
+     */
+    public static void addFragmentToActivity(@NonNull FragmentManager fragmentManager,
+                                             @NonNull Fragment fragment, int frameId) {
+
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.add(frameId, fragment);
+        transaction.commit();
+    }
+
+    public static void showFragmentOfActivity(@NonNull FragmentManager fragmentManager,
+                                              @NonNull Fragment fragment) {
+     
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.show(fragment);
+        transaction.commit();
+    }
+
+    public static void hideFragmentOfActivity(@NonNull FragmentManager fragmentManager,
+                                              @NonNull Fragment fragment) {
+    
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.hide(fragment);
+        transaction.commit();
     }
 }
