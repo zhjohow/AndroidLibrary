@@ -46,28 +46,28 @@ public class HttpClient {
 	 * @param
 	 * @return 实例
 	 */
-	public static HttpClient getInstance(Context context) {
+	public static HttpClient getInstance() {
 
 		token = UserManager.getToken(BaseApplication.context());
 
-		if (!HttpUtils.isNetworkConnected(context)) {
+		if (!HttpUtils.isNetworkConnected(BaseApplication.context())) {
 			DialogUtils.hintLoadingProgress();
 
-			ToastUtils.showToast(context, "没有网络，请检查网络设置！");
+			ToastUtils.showToast("没有网络，请检查网络设置！");
 
 		}
 
 		if (sInstance == null) {
-			sInstance = new HttpClient(context);
+			sInstance = new HttpClient();
 
 		}
 		return sInstance;
 	}
 
-	private HttpClient(Context context) {
-		mContext = context;
+	private HttpClient() {
+	
 		Retrofit retrofit = new Retrofit.Builder()
-				.baseUrl(context.getResources()
+				.baseUrl(BaseApplication.context().getResources()
 						.getString(R.string.strKey))
 				.client(HttpManager.getOkHttpClient())
 				.addConverterFactory(GsonConverterFactory.create())
