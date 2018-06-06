@@ -11,19 +11,41 @@ public abstract class BasePresenter<T> {
 
     public void attachView(T view) {
 
-
         this.mView = view;
-        if (mCompositeSubscription == null)
-        mCompositeSubscription = new CompositeSubscription();
    }
 
-
     public void detachView() {
-        if (mCompositeSubscription == null)
-        mCompositeSubscription.unsubscribe();//取消订阅
-        mView = null;
+
+        this.mView = null;
+        onUnsubscribe();
     }
 
+
+
+    //RXjava取消注册，以避免内存泄露
+    public void onUnsubscribe() {
+        if (mCompositeSubscription != null && mCompositeSubscription.hasSubscriptions()) {
+            mCompositeSubscription.unsubscribe();
+            mCompositeSubscription = null;
+        }
+    }
+
+
+    public void addSubscription(Observable observable, Subscriber subscriber) {
+        if (mCompositeSubscription == null) {
+            mCompositeSubscription = new CompositeSubscription();
+        }
+        mCompositeSubscription.add(observable
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber));
+    }
+
+
+    public boolean isViewAttached(){
+        return mView!= null;
+    }
 
 }
 
