@@ -7,15 +7,19 @@ public abstract class BasePresenter<T> {
     public T mView;//View
     protected Subscription mSubscription;
     protected CompositeSubscription mCompositeSubscription;//使用compositesubcription 管理Subcription
-
+    protected Reference<T>  viewRef; 
 
     public void attachView(T view) {
 
         this.mView = view;
+        viewRef= new WeakReference<T>(view); 
    }
 
     public void detachView() {
-
+        if(viewRef !=){  
+            viewRef.clear();  
+            viewRef=;  
+        } 
         this.mView = null;
         onUnsubscribe();
     }
