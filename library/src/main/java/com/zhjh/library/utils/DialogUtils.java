@@ -35,31 +35,34 @@ public class DialogUtils {
     public  static void showLoadingProgress(Context context, boolean cancelable, String showContent) {
         if (dialog == null || reference == null || reference.get() == null || reference.get().isFinishing()) {
             reference = new WeakReference<>((Activity) context);
+            }
 
             dialog = new MaterialDialog.Builder(context).theme(Theme.LIGHT).content(showContent).progress(true, 0).progressIndeterminateStyle(false).show();
             dialog.setCanceledOnTouchOutside(false);
             dialog.setCancelable(cancelable);
-        }
+        
     }
 
     public  static void showLoadingProgress(Context context,boolean cancelable,String showContent,MaterialDialog.OnDismissListener dismissListener) {
 
         if (dialog == null || reference == null || reference.get() == null || reference.get().isFinishing()) {
             reference = new WeakReference<>((Activity) context);
+              }
             dialog = new MaterialDialog.Builder(context).theme(Theme.LIGHT).dismissListener(dismissListener).content(showContent).progress(true, 0).progressIndeterminateStyle(false).show();
             dialog.setCanceledOnTouchOutside(false);
             dialog.setCancelable(cancelable);
-        }
+      
     }
 
     public static void showDialog(Context context, boolean cancelable, String showtitle,
                                   String positivetext,MaterialDialog.SingleButtonCallback positivecallback) {
         if (dialog == null || reference == null || reference.get() == null || reference.get().isFinishing()) {
             reference = new WeakReference<>((Activity) context);
+             }
             dialog = new MaterialDialog.Builder(context).theme(Theme.LIGHT).title(showtitle).positiveText(positivetext).onPositive(positivecallback).show();
             dialog.setCanceledOnTouchOutside(false);
             dialog.setCancelable(cancelable);
-        }
+       
 
     }
 
@@ -67,11 +70,12 @@ public class DialogUtils {
                                   String positivetext,String negative,MaterialDialog.SingleButtonCallback positivecallback) {
         if (dialog == null || reference == null || reference.get() == null || reference.get().isFinishing()) {
             reference = new WeakReference<>((Activity) context);
+             }
             dialog = new MaterialDialog.Builder(context).theme(Theme.LIGHT).title(showtitle).positiveText(positivetext).onPositive(positivecallback).show();
             dialog.setCanceledOnTouchOutside(false);
             dialog.setCancelable(cancelable);
 
-        }
+       
     }
 
 
@@ -81,11 +85,12 @@ public class DialogUtils {
                                   String positivetext, String negative, MaterialDialog.SingleButtonCallback positivecallback, MaterialDialog.SingleButtonCallback negativecallback) {
         if (dialog == null || reference == null || reference.get() == null || reference.get().isFinishing()) {
             reference = new WeakReference<>((Activity) context);
+             }
             dialog = new MaterialDialog.Builder(context).theme(Theme.LIGHT).title(showtitle).content(showContent).positiveText(positivetext).negativeText(negative).onPositive(positivecallback).onNegative(negativecallback).show();
             dialog.setCanceledOnTouchOutside(false);
             dialog.setCancelable(cancelable);
 
-        }
+       
     }
 
     /**
@@ -95,9 +100,7 @@ public class DialogUtils {
         if (dialog != null ) {
             dialog.dismiss();
             dialog = null;
-        }
-
-        dialog = null;
+        }     
         reference = null;
     }
 
