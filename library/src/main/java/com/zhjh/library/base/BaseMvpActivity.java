@@ -120,20 +120,24 @@ public abstract class BaseMvpActivity<V, T extends BasePresenter<V>> extends App
 
     public abstract T initPresenter();
 
-    private void initP() {
-        presenter = initPresenter();
-        if (presenter != null)
-            presenter.attachView((V) this);
-    }
+	private void initP() {
+		presenter = initPresenter();
+		if (presenter != null) {
+			presenter.attachView((V) this);
+		}
+	}
 
-    private void resumeP() {
-        if (presenter != null)
-            presenter.attachView((V) this);
-    }
+	private void resumeP() {
+		if (presenter != null) {
+			presenter.attachView((V) this);
+		}
+	}
 
-    private void detachP() {
-        if (presenter != null)
-            presenter.detachView();
-    }
+	private void detachP() {
+		if (presenter != null) {
+			presenter.detachView();
+			presenter = null;
+		}
+	}
 
 }
