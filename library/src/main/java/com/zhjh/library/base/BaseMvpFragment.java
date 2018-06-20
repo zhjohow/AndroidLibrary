@@ -70,18 +70,24 @@ public abstract class BaseMvpFragment<V,T extends BasePresenter<V>> extends Frag
 
 	private void initP() {
 		presenter = initPresenter();
-		if (presenter != null)
-			presenter.attachView((V) this);
+		if (presenter != null){
+		   presenter.attachView((V) this);
+		}
+			
 	}
 
 	private void resumeP() {
-		if (presenter != null)
-			presenter.attachView((V) this);
+		if (presenter != null){
+		    presenter.attachView((V) this);
+		}
 	}
 
 	private void detachP() {
-		if (presenter != null)
+		if (presenter != null){
+			
 			presenter.detachView();
+			presenter = null;
+		}
 	}
 
 }
