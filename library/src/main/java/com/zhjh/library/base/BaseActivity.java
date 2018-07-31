@@ -109,7 +109,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         Log.e(this.getClass().getName() , "Destroy");
-        AppManager.getAppManager().finishActivity(this);
+        AppManager.getAppManager().removeActivity(this);
         BaseBus.getInstance().unregister(this);
         super.onDestroy();
     }
