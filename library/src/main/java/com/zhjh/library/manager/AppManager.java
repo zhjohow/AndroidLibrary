@@ -28,6 +28,17 @@ public class AppManager {
 		}
 		activityStack.add(activity);
 	}
+	
+	public void removeActivity(Activity activity) {
+
+        if (activity != null) {
+
+            activityStack.remove(activity);
+
+            activity = null;
+
+        }
+       }
 
 	public Activity currentActivity() {
 		Activity activity = activityStack.lastElement();
@@ -41,9 +52,17 @@ public class AppManager {
 
 	public void finishActivity(Activity activity) {
 		if (activity != null) {
-			activityStack.remove(activity);
-			activity.finish();
-			activity = null;
+			if(activity.isFinishing()) {
+				activityStack.remove(activity);
+
+//				activity.finish();
+				activity = null;
+			}else {
+				activityStack.remove(activity);
+
+				activity.finish();
+				activity = null;
+			}
 		}
 	}
 
@@ -52,6 +71,7 @@ public class AppManager {
 		for (Activity activity : activityStack) {
 			if (activity.getClass().equals(activity)) {
 				finishActivity(activity);
+				break;
 			}
 		}
 	}
